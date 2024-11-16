@@ -8,22 +8,6 @@ const MainContainer = styled.div`
   margin-top: 10px;
 `;
 
-const ContainerPart1 = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0; /* Adicionando margem uniforme para alinhamento */
-`;
-
-const ContainerPart2 = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0; /* Garantir que a margem seja igual ao ContainerPart1 */
-`;
-
 const Temperatura = styled.div`
   background-color: #fff;
   width: 100%;
@@ -66,13 +50,16 @@ const ChartsContainer = styled.div`
   gap: 10px; /* Espaçamento opcional entre as divs */
 `;
 
+const Espaco = styled.div`
+  height: 100px;
+`;
+
 export {
   AccelerationX,
   AccelerationY,
   AccelerationZ,
   ChartsContainer,
-  ContainerPart1,
-  ContainerPart2,
   MainContainer,
   Temperatura,
+  Espaco,
 };

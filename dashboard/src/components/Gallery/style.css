@@ -1,0 +1,32 @@
+.Container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.Foto {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.IMG {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Duas colunas */
+    gap: 30px;
+    /* Espaçamento entre as imagens */
+}
+
+.IMG img {
+    width: 100%;
+    /* Ajusta o tamanho ao espaço disponível */
+    height: 350px;
+    /* Altura fixa para todas as imagens */
+    object-fit: cover;
+    /* Corta a imagem para preencher o espaço uniformemente */
+    border-radius: 10px;
+    /* (Opcional) Bordas arredondadas */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    /* (Opcional) Adiciona sombra */
+}

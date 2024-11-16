@@ -64,21 +64,21 @@ const data_sensor = [
     img: 'Sensor/acelerometro.jpg',
     sensor: 'Acelerômetro',
     descriptions:
-      'O acelerômetro MPU6050 é um sensor que mede aceleração e orientação, detectando movimentos e rotações em três eixos. Além de ser usado em dispositivos móveis, ele também serve para medir vibrações, monitorando variações de aceleração em sistemas mecânicos e ajudando em aplicações como manutenção preditiva e análise de desempenho de máquinas.',
+      'O acelerômetro MPU6050 mede aceleração e orientação em três eixos, sendo útil para detectar vibrações em sistemas mecânicos e auxiliar em manutenção preditiva e análise de máquinas.',
     link: 'https://www.rsrobotica.com.br/acelerometro-mpu6050',
   },
   {
     img: 'Sensor/capacitivo.jpg',
     sensor: 'Indutivo',
     descriptions:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat libero est voluptas! Consectetur vitae, rem voluptatum',
+      'O sensor indutivo detecta objetos metálicos sem contato, usando variações em um campo eletromagnético. É amplamente usado na automação industrial para monitorar posição e proximidade com precisão e resistência.',
     link: 'https://www.luzautomacao.com.br/produto/sensor-capacitivo-nao-faceado-m18-sn-8mm-npn-12v-24v-4-fios-1na-1nf-metaltex',
   },
   {
     img: 'Sensor/termopar.jpg',
     sensor: 'Termopar',
     descriptions:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat libero est voluptas! Consectetur vitae, rem voluptatum',
+      'O termopar tipo T, é um sensor de alta precisão usado para medir temperaturas de -200°C a 350°C. É ideal para aplicações industriais e laboratoriais, devido à sua estabilidade e resistência à corrosão.',
     link: 'https://www.dkaautomacao.com.br/produto/termopar-tipopt100-3-fios-sensor-47mm-x-80mm-cabo-malha-1mt',
   },
 ];
@@ -88,21 +88,21 @@ const data_ESP = [
     img: 'Sensor/ESP_8266.jpg',
     sensor: 'ESP 8266',
     descriptions:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat libero est voluptas! Consectetur vitae, rem voluptatum',
+      'A ESP8266 é um microcontrolador compacto e econômico com conectividade Wi-Fi integrada. Muito utilizada em projetos de IoT e automação residencial, permite conectar dispositivos à internet com facilidade, oferecendo boa performance e baixo consumo de energia.',
     link: 'https://www.rsrobotica.com.br/acelerometro-mpu6050',
   },
   {
     img: 'Sensor/ESP_32.jpeg',
     sensor: 'ESP 32',
     descriptions:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat libero est voluptas! Consectetur vitae, rem voluptatum',
+      'A ESP32 é um microcontrolador poderoso e versátil, com conectividade Wi-Fi e Bluetooth integrada. Amplamente usada em projetos de IoT, automação e dispositivos inteligentes, oferece alto desempenho, baixo consumo de energia e suporte a sensores e periféricos diversos.',
     link: 'https://www.luzautomacao.com.br/produto/sensor-capacitivo-nao-faceado-m18-sn-8mm-npn-12v-24v-4-fios-1na-1nf-metaltex',
   },
   {
     img: 'Sensor/Weg-10064372.jpeg',
     sensor: 'Motor',
     descriptions:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat libero est voluptas! Consectetur vitae, rem voluptatum',
+      'O motor WEG 10064372 é um motor elétrico trifásico, projetado para aplicações industriais que exigem alta eficiência e durabilidade. Ele é ideal para acionar máquinas e equipamentos, garantindo desempenho confiável em ambientes rigorosos.',
     link: 'https://www.dkaautomacao.com.br/produto/termopar-tipopt100-3-fios-sensor-47mm-x-80mm-cabo-malha-1mt',
   },
 ];

@@ -1,11 +1,14 @@
 import Header from '../../components/Header';
+import Gallery_img from '../../components/Gallery';
 
-const AboutTheCompany = () => {
+const Gallery = () => {
   return (
     <>
       <Header />
+      <Gallery_img/>
     </>
   );
 };
 
-export default AboutTheCompany;
+
+export default Gallery;

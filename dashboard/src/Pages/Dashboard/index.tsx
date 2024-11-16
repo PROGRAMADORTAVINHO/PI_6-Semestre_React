@@ -10,6 +10,7 @@ import {
   ChartsContainer,
   MainContainer,
   Temperatura,
+  Espaco,
 } from './style';
 
 const dataSchema = z.object({
@@ -163,6 +164,7 @@ const Dashboard = () => {
           </AccelerationZ>
         </ChartsContainer>
       </MainContainer>
+      <Espaco></Espaco>
     </>
   );
 };
