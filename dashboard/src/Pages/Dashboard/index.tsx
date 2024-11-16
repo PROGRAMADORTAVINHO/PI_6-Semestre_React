@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react';
 import { z } from 'zod';
 import Header from '../../components/Header';
 import LineChart from '../../components/LineChart';
+import LineChartMultiple from '../../components/LineChartMultiple';
 import {
-  AccelerationX,
-  AccelerationY,
-  AccelerationZ,
+  AccelerationXYZ,
   ChartsContainer,
   MainContainer,
   Temperatura,
@@ -44,7 +43,6 @@ const generateChartData = (
   key: keyof Data,
   backgroundColor: string
 ) => ({
-  // labels: data.map((item) => new Date(item.timestamp).toLocaleTimeString()),
   labels: data.map((item) => item.id),
   datasets: [
     {
@@ -55,23 +53,32 @@ const generateChartData = (
   ],
 });
 
+
+const generateChartDataMultiple = (
+  data: Data[],
+  label: string | string[], // Aceita string ou array de strings
+  keys: Array<keyof Data>, // Aceita múltiplas chaves
+  backgroundColors: string[] // Aceita um array de cores
+) => ({
+  labels: data.map((item) => item.id),
+  datasets: keys.map((key, index) => ({
+    label: Array.isArray(label) // Verifica se `label` é um array
+      ? label[index % label.length] // Usa o elemento correspondente do array
+      : `${label} (${String(key)})`, // Usa o padrão caso seja string
+    data: data.map((item) => item[key] as number),
+    borderColor: [backgroundColors[index % backgroundColors.length]], // Distribui as cores
+  })),
+});
+
+
+
 const Dashboard = () => {
   const [temperatureData, setTemperatureData] = useState<ChartData>({
     labels: [],
     datasets: [],
   });
 
-  const [accelerationXData, setAccelerationXData] = useState<ChartData>({
-    labels: [],
-    datasets: [],
-  });
-
-  const [accelerationYData, setAccelerationYData] = useState<ChartData>({
-    labels: [],
-    datasets: [],
-  });
-
-  const [accelerationZData, setAccelerationZData] = useState<ChartData>({
+  const [accelerationXYZData, setAccelerationXYZData] = useState<ChartData>({
     labels: [],
     datasets: [],
   });
@@ -89,32 +96,14 @@ const Dashboard = () => {
         )
       );
 
-      setAccelerationXData(
-        generateChartData(
+      setAccelerationXYZData(
+        generateChartDataMultiple(
           response.data as Data[],
-          'Vibração (Hz)',
-          'acceleration_x',
-          'blue'
+          ['Aceleração no eixo X','Aceleração no eixo Y','Aceleração no eixo Z'],
+          ['acceleration_x','acceleration_y','acceleration_z'],
+          ['blue', 'green', 'red'],
         )
-      );
-
-      setAccelerationYData(
-        generateChartData(
-          response.data as Data[],
-          'Vibração (Hz)',
-          'acceleration_y',
-          'blue'
-        )
-      );
-
-      setAccelerationZData(
-        generateChartData(
-          response.data as Data[],
-          'Vibração (Hz)',
-          'acceleration_z',
-          'blue'
-        )
-      );
+      )
     } catch (error) {
       console.log(error);
     }
@@ -142,27 +131,22 @@ const Dashboard = () => {
             />
           </Temperatura>
 
-          <AccelerationX>
+          <Temperatura>
             <LineChart
-              chartData={accelerationXData}
-              yLabel={'Aceleração no eixo X (m/s²)'}
+              chartData={temperatureData}
+              yLabel={'Temperatura (°C)'}
             />
-          </AccelerationX>
+          </Temperatura>
 
-          <AccelerationY>
-            <LineChart
-              chartData={accelerationYData}
-              yLabel={'Aceleração no eixo Y (m/s²)'}
-            />
-          </AccelerationY>
-
-          <AccelerationZ>
-            <LineChart
-              chartData={accelerationZData}
-              yLabel={'Aceleração no eixo Z  (m/s²)'}
-            />
-          </AccelerationZ>
         </ChartsContainer>
+
+        <AccelerationXYZ>
+            <LineChartMultiple
+              chartData={accelerationXYZData}
+              yLabel={'Aceleração (m/s²)'}
+            />
+          </AccelerationXYZ>
+
       </MainContainer>
       <Espaco></Espaco>
     </>
