@@ -1,0 +1,126 @@
+/* ------------ VARIABLES ------------ */
+:root {
+  /* FONT */
+  --font: 'Montserrat', sans-serif;
+
+  /* COLORS */
+  --color: #f24405;
+  --bg_color: #f2f2f2;
+}
+
+.title_sensor {
+  font-family: var(--font);
+  color: var(--color);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: xx-large;
+}
+
+.hoverSensor {
+  min-height: 60vh;
+  background: var(--bg_color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font);
+}
+
+.HoverESP2 {
+  margin-top: 10px;
+  min-height: 60vh;
+  background: var(--bg_color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font);
+}
+
+.conterner {
+  width: 1000px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  position: relative;
+}
+
+.conterner .card .face {
+  width: 300px;
+  height: 320px;
+  transition: 0.5s;
+}
+
+.conterner .card .face.face1 {
+  position: relative;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.conterner .card:hover .face.face1 {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.conterner .card .face.face1 .content img {
+  max-width: 200px;
+}
+
+h3 {
+  color: var(--color);
+  margin: 10px 0 0;
+  padding: 0;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.conterner .card .face.face2 {
+  position: relative;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  transform: translateY(-100%);
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.conterner .card:hover .face.face2 {
+  transform: translateY(0px);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+.conterner .card .face.face2 p {
+  text-align: justify;
+  padding: 0;
+}
+
+.conterner .card .face.face2 a {
+  display: block;
+  margin: 10px auto; /* Centraliza horizontalmente */
+  padding: 8px 12px;
+  color: var(--color);
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center; /* Centraliza o texto no botão */
+  transition: background-color 0.3s ease;
+  width: fit-content; /* Ajusta o tamanho do botão conforme o conteúdo */
+}
+
+.conterner .card .face.face2 a:hover {
+  background: var(--color);
+  color: #fff;
+}
+
+.espaco {
+  height: 100px;
+}

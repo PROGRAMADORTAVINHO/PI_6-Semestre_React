@@ -1,0 +1,36 @@
+.container_project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  padding: 2%;
+}
+
+.card_description_about_project {
+  background-color: #fff;
+  padding: 5px 25px 0px 25px;
+  border-radius: 20px;
+  margin: 0 100px 0 100px;
+  width: 80%;
+  height: 300px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card_about_project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project_title {
+  color: var(--color);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: xx-large;
+}
+
+.project_txt {
+  margin: 2% 2% 1% 2%;
+  text-align: justify;
+}
