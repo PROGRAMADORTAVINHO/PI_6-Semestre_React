@@ -1,4 +1,10 @@
-.Container {
+.Container_video{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.Container_img {
     display: flex;
     justify-content: center;
     padding: 10px;
@@ -16,6 +22,20 @@
     /* Duas colunas */
     gap: 30px;
     /* Espaçamento entre as imagens */
+}
+
+.Video{
+    width: 97%;
+    display: flex;
+    justify-content: center;
+}
+
+.Video video {
+    width: 100%; /* Ajusta à largura do contêiner */
+    max-height: 500px; /* Limita a altura */
+    object-fit: cover; /* Preenche sem distorcer */
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 .IMG img {
