@@ -16,6 +16,14 @@ const Temperatura = styled.div`
   text-align: center;
 `;
 
+const Media = styled.div`
+  background-color: #fff;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+`;
+
 const AccelerationXYZ = styled.div`
   margin-top: 10px;
   background-color: #fff;
@@ -68,6 +76,7 @@ export {
   AccelerationY,
   AccelerationZ,
   AccelerationXYZ,
+  Media,
   ChartsContainer,
   MainContainer,
   Temperatura,

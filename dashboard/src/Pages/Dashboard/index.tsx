@@ -4,11 +4,13 @@ import { z } from 'zod';
 import Header from '../../components/Header';
 import LineChart from '../../components/LineChart';
 import LineChartMultiple from '../../components/LineChartMultiple';
+import BarChart from '../../components/BarChart';
 import {
   AccelerationXYZ,
   ChartsContainer,
   MainContainer,
   Temperatura,
+  Media,
   Espaco,
 } from './style';
 
@@ -56,20 +58,43 @@ const generateChartData = (
 
 const generateChartDataMultiple = (
   data: Data[],
-  label: string | string[], // Aceita string ou array de strings
-  keys: Array<keyof Data>, // Aceita múltiplas chaves
-  backgroundColors: string[] // Aceita um array de cores
+  label: string | string[],
+  keys: Array<keyof Data>,
+  backgroundColors: string[]
 ) => ({
   labels: data.map((item) => item.id),
   datasets: keys.map((key, index) => ({
-    label: Array.isArray(label) // Verifica se `label` é um array
-      ? label[index % label.length] // Usa o elemento correspondente do array
-      : `${label} (${String(key)})`, // Usa o padrão caso seja string
+    label: Array.isArray(label)
+      ? label[index % label.length]
+      : `${label} (${String(key)})`,
     data: data.map((item) => item[key] as number),
-    borderColor: [backgroundColors[index % backgroundColors.length]], // Distribui as cores
+    borderColor: [backgroundColors[index % backgroundColors.length]],
   })),
 });
 
+const generateBarChartData = (
+  data: Data[],
+  label: string | string[],
+  keys: Array<keyof Data>,
+  backgroundColors: string[]
+) => {
+  const calculateAverage = (key: keyof Data) => {
+    const total = data.reduce((sum, item) => sum + (item[key] as number), 0);
+    return total / data.length;
+  };
+
+  const averages = keys.map((key) => calculateAverage(key));
+
+  return {
+    labels: [0],
+    datasets: keys.map((key, index) => ({
+      label: Array.isArray(label) ? label[index] : `${label} (${String(key)})`,
+      data: [averages[index]],
+      backgroundColor: [backgroundColors[index % backgroundColors.length]],
+      borderColor: [backgroundColors[index % backgroundColors.length]],
+    })),
+  };
+};
 
 
 const Dashboard = () => {
@@ -79,6 +104,11 @@ const Dashboard = () => {
   });
 
   const [accelerationXYZData, setAccelerationXYZData] = useState<ChartData>({
+    labels: [],
+    datasets: [],
+  });
+
+  const [averageData, setAverageData] = useState<ChartData>({
     labels: [],
     datasets: [],
   });
@@ -103,7 +133,19 @@ const Dashboard = () => {
           ['acceleration_x','acceleration_y','acceleration_z'],
           ['blue', 'green', 'red'],
         )
-      )
+      );
+
+      setAverageData(
+        generateBarChartData(
+          response.data as Data[],
+          ['Aceleração no eixo X', 'Aceleração no eixo Y', 'Aceleração no eixo Z', 'Temperatura'],
+          ['acceleration_x', 'acceleration_y', 'acceleration_z', 'temperature'],
+          ['blue', 'green', 'purple', 'red']
+        )
+      );
+      
+      
+
     } catch (error) {
       console.log(error);
     }
@@ -131,12 +173,12 @@ const Dashboard = () => {
             />
           </Temperatura>
 
-          <Temperatura>
-            <LineChart
-              chartData={temperatureData}
-              yLabel={'Temperatura (°C)'}
+          <Media>
+            <BarChart
+              chartData={averageData}
+              yLabel={'Média'}
             />
-          </Temperatura>
+          </Media>
 
         </ChartsContainer>
 
