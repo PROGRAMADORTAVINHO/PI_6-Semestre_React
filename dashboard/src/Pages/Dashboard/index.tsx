@@ -77,7 +77,7 @@ const Dashboard = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('/data');
+      const response = await axios.get('https://api-fkun.onrender.com/data');
 
       setTemperatureData(
         generateChartData(
