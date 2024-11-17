@@ -27,7 +27,7 @@ const Media = styled.div`
 const AccelerationXYZ = styled.div`
   margin-top: 10px;
   background-color: #fff;
-  width: 90%;
+  width: 70%;
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
