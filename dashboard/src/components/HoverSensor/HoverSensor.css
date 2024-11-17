@@ -8,6 +8,7 @@
   --bg_color: #f2f2f2;
 }
 
+/* TITLE */
 .title_sensor {
   font-family: var(--font);
   color: var(--color);
@@ -17,6 +18,7 @@
   font-size: xx-large;
 }
 
+/* CONTAINER FOR THE CARDS */
 .hoverSensor {
   min-height: 60vh;
   background: var(--bg_color);
@@ -36,19 +38,28 @@
   font-family: var(--font);
 }
 
+/* CARD CONTAINER */
 .conterner {
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
   position: relative;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap; /* Permite que as cards se ajustem em linha */
+  margin: 0 auto;
 }
 
+/* INDIVIDUAL CARD */
 .card {
   position: relative;
+  width: 100%; /* Assegura que a card ocupe 100% do espaço disponível */
+  max-width: 300px; /* Limita a largura da card */
+  margin: 10px;
 }
 
+/* FRONT FACE OF THE CARD */
 .conterner .card .face {
-  width: 300px;
+  width: 100%;
   height: 320px;
   transition: 0.5s;
 }
@@ -81,6 +92,7 @@ h3 {
   font-size: 1.5em;
 }
 
+/* BACK FACE OF THE CARD */
 .conterner .card .face.face2 {
   position: relative;
   background: #fff;
@@ -99,6 +111,7 @@ h3 {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
+
 .conterner .card .face.face2 p {
   text-align: justify;
   padding: 0;
@@ -106,14 +119,14 @@ h3 {
 
 .conterner .card .face.face2 a {
   display: block;
-  margin: 10px auto; /* Centraliza horizontalmente */
+  margin: 10px auto;
   padding: 8px 12px;
   color: var(--color);
   text-decoration: none;
   border-radius: 5px;
-  text-align: center; /* Centraliza o texto no botão */
+  text-align: center;
   transition: background-color 0.3s ease;
-  width: fit-content; /* Ajusta o tamanho do botão conforme o conteúdo */
+  width: fit-content;
 }
 
 .conterner .card .face.face2 a:hover {
@@ -121,6 +134,86 @@ h3 {
   color: #fff;
 }
 
+/* SPACE BETWEEN SECTIONS */
 .espaco {
   height: 100px;
+}
+
+/* ------------ MEDIA QUERIES FOR RESPONSIVENESS ------------ */
+
+/* For small devices (mobiles) */
+@media (max-width: 600px) {
+  .conterner {
+    flex-direction: column;
+    align-items: center; /* Centraliza as cards */
+  }
+
+  .conterner .card {
+    width: 100%; /* Cada card ocupa 100% da largura */
+    max-width: 100%; /* Remove limite de largura para dispositivos pequenos */
+    margin: 10px 0; /* Adiciona espaçamento vertical entre as cards */
+  }
+
+  .title_sensor {
+    font-size: 1.5em; /* Reduz o tamanho da fonte para telas pequenas */
+  }
+
+  h3 {
+    font-size: 1.2em; /* Ajusta o tamanho do título das cards */
+  }
+
+  /* Desativa o efeito hover em telas pequenas */
+  .conterner .card:hover .face.face1,
+  .conterner .card:hover .face.face2 {
+    transform: none;
+    /* Remove a transformação que ocorre no hover */
+  }
+}
+
+/* For medium devices (tablets) */
+@media (max-width: 768px) {
+  .conterner {
+    flex-direction: column;
+    align-items: center; /* Centraliza as cards */
+  }
+
+  .conterner .card {
+    width: 100%; /* Cada card ocupa 100% da largura */
+    max-width: 80%; /* Limita a largura das cards em 80% */
+  }
+
+  .title_sensor {
+    font-size: 2em; /* Ajusta o tamanho da fonte */
+  }
+
+  h3 {
+    font-size: 1.4em; /* Ajusta o tamanho do título */
+  }
+
+  /* Desativa o efeito hover em telas pequenas */
+  .conterner .card:hover .face.face1,
+  .conterner .card:hover .face.face2 {
+    transform: none;
+  }
+}
+
+/* For larger screens (desktops) */
+@media (min-width: 1024px) {
+  .conterner {
+    flex-direction: row;
+    justify-content: space-between; /* Mantém as cards distribuídas */
+  }
+
+  .conterner .card {
+    width: 30%; /* Limita a largura das cards a 30% da tela */
+    max-width: 300px;
+  }
+
+  .title_sensor {
+    font-size: xx-large;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
 }

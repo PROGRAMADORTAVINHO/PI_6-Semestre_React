@@ -34,3 +34,56 @@
   margin: 2% 2% 1% 2%;
   text-align: justify;
 }
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .card_description_about_project {
+    margin: 0 50px 0 50px; /* Reduz as margens laterais */
+    height: auto; /* Permite que o conteúdo ajuste a altura dinamicamente */
+    padding: 10px 20px; /* Ajusta o espaçamento interno */
+  }
+
+  .project_title {
+    font-size: x-large; /* Reduz o tamanho do título */
+  }
+
+  .project_txt {
+    font-size: 16px; /* Ajusta o tamanho do texto para telas menores */
+  }
+}
+
+@media (max-width: 768px) {
+  .card_description_about_project {
+    width: 90%; /* Expande o card para ocupar mais espaço horizontal */
+    margin: 0 20px; /* Ajusta as margens para telas menores */
+  }
+
+  .project_title {
+    font-size: large; /* Reduz mais o tamanho do título */
+  }
+
+  .project_txt {
+    font-size: 14px; /* Ajusta ainda mais o tamanho do texto */
+  }
+}
+
+@media (max-width: 480px) {
+  .container_project {
+    flex-direction: column; /* Permite que os elementos fiquem em coluna */
+    height: auto; /* Ajusta a altura dinamicamente */
+  }
+
+  .card_description_about_project {
+    margin: 0 10px; /* Reduz as margens laterais */
+    padding: 10px; /* Ajusta o espaçamento interno */
+    width: 100%; /* Ocupa 100% da largura disponível */
+  }
+
+  .project_title {
+    font-size: medium; /* Adapta o tamanho do título para telas muito pequenas */
+  }
+
+  .project_txt {
+    font-size: 12px; /* Adapta o texto para maior legibilidade */
+  }
+}
