@@ -86,13 +86,13 @@ const data = [
   {
     name: 'Marcelo Alfonso de Souza',
     img: 'students/marcelo.jpg',
-    profession: 'Web Developer',
+    profession: 'Back-end Developer',
     LinkedIn: 'https://www.linkedin.com/in/marcelo-alfonso/',
   },
   {
     name: 'Rafael Eduardo Rodrigues Navarro',
     img: 'students/rafael.jpg',
-    profession: 'IA Developer',
+    profession: 'SolidWorks',
     LinkedIn: 'https://www.linkedin.com/in/rafael-navarro-041b111b4/',
   },
   {

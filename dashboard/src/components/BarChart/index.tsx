@@ -36,7 +36,7 @@ const BarChart = ({
         responsive: true,
         plugins: {
             legend: {
-                display: true,
+                display: false,
                 position: 'bottom' as const,
             },
             colors: {
@@ -50,6 +50,11 @@ const BarChart = ({
                     padding: { top: 10, bottom: 10 },
                     text: 'ID',
                 },
+                ticks: {
+                    font: {
+                        size: 11.67,  // Ajuste o tamanho da fonte aqui
+                    },
+                },
             },
             y: {
                 title: {
@@ -60,6 +65,7 @@ const BarChart = ({
             },
         },
     };
+    
 
     return (
         <Bar data={chartData} options={options} style={{ padding: '15px' }} />

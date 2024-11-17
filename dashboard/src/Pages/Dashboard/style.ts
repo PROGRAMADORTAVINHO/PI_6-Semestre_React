@@ -33,32 +33,6 @@ const AccelerationXYZ = styled.div`
   text-align: center;
 `;
 
-const AccelerationX = styled.div`
-  background-color: #fff;
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-  text-align: center;
-`;
-
-const AccelerationY = styled.div`
-  margin-top: 30px;
-  background-color: #fff;
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-  text-align: center;
-`;
-
-const AccelerationZ = styled.div`
-  margin-top: 30px;
-  background-color: #fff;
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-  text-align: center;
-`;
-
 const ChartsContainer = styled.div`
   margin-top: 10px;
   width: 90%;
@@ -72,9 +46,6 @@ const Espaco = styled.div`
 `;
 
 export {
-  AccelerationX,
-  AccelerationY,
-  AccelerationZ,
   AccelerationXYZ,
   Media,
   ChartsContainer,

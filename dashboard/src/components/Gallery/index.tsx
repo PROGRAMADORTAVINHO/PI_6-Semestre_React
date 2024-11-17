@@ -12,7 +12,6 @@ const Gallery = () => {
         </div>
       </div>
 
-
       <div className="Container_img">
           <div className="Foto">
             <div className="IMG">

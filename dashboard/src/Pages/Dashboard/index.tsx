@@ -36,8 +36,14 @@ const chartDataSchema = z.object({
   datasets: z.array(datasetSchema),
 });
 
+const chartData2Schema = z.object({
+  labels: z.array(z.string()),
+  datasets: z.array(datasetSchema),
+});
+
 type Data = z.infer<typeof dataSchema>;
 type ChartData = z.infer<typeof chartDataSchema>;
+type ChartData2 = z.infer<typeof chartData2Schema>;
 
 const generateChartData = (
   data: Data[],
@@ -74,7 +80,7 @@ const generateChartDataMultiple = (
 
 const generateBarChartData = (
   data: Data[],
-  label: string | string[],
+  _label: string | string[],
   keys: Array<keyof Data>,
   backgroundColors: string[]
 ) => {
@@ -85,17 +91,18 @@ const generateBarChartData = (
 
   const averages = keys.map((key) => calculateAverage(key));
 
+  const xValues = ['Aceleração no eixo X', 'Aceleração no eixo Y', 'Aceleração no eixo Z', 'Temperatura'];
+
   return {
-    labels: [0],
-    datasets: keys.map((key, index) => ({
-      label: Array.isArray(label) ? label[index] : `${label} (${String(key)})`,
-      data: [averages[index]],
-      backgroundColor: [backgroundColors[index % backgroundColors.length]],
-      borderColor: [backgroundColors[index % backgroundColors.length]],
-    })),
+    labels: xValues, // Numérico para atender ao tipo do estado
+    datasets: [{
+      label: 'Média',
+      data: averages,
+      backgroundColor: backgroundColors,
+      borderColor: backgroundColors,
+    }],
   };
 };
-
 
 const Dashboard = () => {
   const [temperatureData, setTemperatureData] = useState<ChartData>({
@@ -108,7 +115,7 @@ const Dashboard = () => {
     datasets: [],
   });
 
-  const [averageData, setAverageData] = useState<ChartData>({
+  const [averageData, setAverageData] = useState<ChartData2>({
     labels: [],
     datasets: [],
   });
@@ -187,7 +194,7 @@ const Dashboard = () => {
               chartData={accelerationXYZData}
               yLabel={'Aceleração (m/s²)'}
             />
-          </AccelerationXYZ>
+        </AccelerationXYZ>
 
       </MainContainer>
       <Espaco></Espaco>
