@@ -1,6 +1,7 @@
 import './style.css';
 
 
+
 const Gallery = () => {
   return (
     <>

@@ -1,0 +1,100 @@
+:root {
+    /* FONT */
+    --font: 'Montserrat', sans-serif;
+
+    /* COLORS */
+    --color: #f24405;
+    --bg_color: #f2f2f2;
+}
+
+.container_btn {
+    display: flex;
+    justify-content: flex-end;
+    /* Alinha o conteúdo à direita */
+    position: relative;
+    /* Define um contexto de posicionamento */
+    background-color: #F2F2F2;
+}
+
+.icon-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    color: #333333;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    margin-right: 25px;
+    /* Distância do botão para a borda direita da página */
+}
+
+.icon-button:hover {
+    color: var(--color);
+    cursor: pointer;
+}
+
+.icon-button:active {
+    background: #cccccc;
+}
+
+.icon-button__badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 25px;
+    height: 25px;
+    background: var(--color);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.notification-menu {
+    position: absolute;
+    top: 70px;
+    /* Abaixo do botão */
+    right: 0;
+    /* Posiciona a aba de notificações ao lado do botão */
+    width: 300px;
+    max-height: 400px;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: none;
+    /* Inicialmente escondido */
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 10000;
+}
+
+.notification-title {
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eeeeee;
+    text-align: center;
+}
+
+.notification-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notification-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 14px;
+}
+
+.notification-item:hover {
+    background: #f9f9f9;
+    cursor: pointer;
+}

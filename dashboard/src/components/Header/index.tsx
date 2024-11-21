@@ -1,7 +1,23 @@
 import { Link } from 'react-router-dom';
-import { Container, Logo, Navbar, NavItem, NavLink, NavList } from './style';
+import { 
+  Container,
+  Logo,
+  Navbar,
+  NavItem,
+  NavLink,
+  NavList
+} from './style';
+import NotificationMenu from '../BtnNotificacao';
 
 const Header = () => {
+  const notifications: string[] = [
+    'Notificação 1',
+    'Notificação 2',
+    'Notificação 3',
+    'Notificação 4',
+    'Notificação 5',
+];
+
   return (
     <Container>
       <Navbar>
@@ -31,6 +47,9 @@ const Header = () => {
               <NavLink href='#'>Sobre</NavLink>
             </Link>
           </NavItem>
+
+          <NotificationMenu notifications={notifications} />
+
         </NavList>
       </Navbar>
     </Container>
