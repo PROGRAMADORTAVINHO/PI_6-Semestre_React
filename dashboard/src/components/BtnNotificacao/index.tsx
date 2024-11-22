@@ -48,7 +48,6 @@ const NotificationMenu: React.FC<NotificationMenuProps> = ({ notifications }) =>
                         boxShadow: '5px 5px 10px rgba(0, 0, 0, 0.5);',
                         padding: '10px',
                         width: '300px',
-                        backgroundColor: '#fff',
                     }}
                 >
                     <p className="notification-title">Notificações</p>
@@ -59,7 +58,6 @@ const NotificationMenu: React.FC<NotificationMenuProps> = ({ notifications }) =>
                             boxShadow: '5px 5px 10px rgba(0, 0, 0, 0.5);',
                             padding: '10px',
                             width: '300px',
-                            backgroundColor: '#fff',
                         }}
                         >
                         {notifications.map((notif, index) => (
