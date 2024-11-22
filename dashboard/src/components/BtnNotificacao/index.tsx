@@ -36,7 +36,7 @@ const NotificationMenu: React.FC<NotificationMenuProps> = ({ notifications }) =>
             <div className="container_btn">
             <button type="button" className="icon-button" id="notification-btn" onClick={toggleMenu}>
                 <span className="material-icons">notifications</span>
-                <span className="icon-button__badge">1</span>
+                <span className="icon-button__badge">{notifications.length}</span>
             </button>
             
             {isMenuOpen && (

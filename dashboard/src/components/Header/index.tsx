@@ -8,15 +8,35 @@ import {
   NavList
 } from './style';
 import NotificationMenu from '../BtnNotificacao';
+import { z } from 'zod';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const notificationSchema = z.object({
+  id: z.number(),
+  data_id: z.number(),
+  title: z.string(),
+  body: z.string(),
+  created_at: z.string()
+});
+
+type Notification = z.infer<typeof notificationSchema>;
 
 const Header = () => {
-  const notifications: string[] = [
-    'Notificação 1',
-    'Notificação 2',
-    'Notificação 3',
-    'Notificação 4',
-    'Notificação 5',
-];
+  const [notifications, setNotifications] = useState<Notification[]>([]); // Estado para armazenar notificações
+
+  const fetchNotifications = async () => {
+    try {
+      const response = await axios.get<Notification[]>('https://api-fkun.onrender.com/notifications');
+      setNotifications(response.data);
+    } catch (error) {
+      console.error('Erro ao buscar notificações:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchNotifications();
+  }, []); 
 
   return (
     <Container>
@@ -48,7 +68,7 @@ const Header = () => {
             </Link>
           </NavItem>
 
-          <NotificationMenu notifications={notifications} />
+          <NotificationMenu notifications={notifications.map(notification => notification.title)} />
 
         </NavList>
       </Navbar>
