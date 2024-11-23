@@ -18,7 +18,35 @@ const SlideAboutUs = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 2,
+    responsive: [
+      {
+        breakpoint: 1024, // largura máxima da tela
+        settings: {
+          slidesToShow: 2, // número de slides visíveis
+          slidesToScroll: 1, // número de slides para rolar
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false, // oculta os pontos em telas pequenas
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false, // oculta os pontos em telas pequenas
+        },
+      },
+    ],
   };
+  
 
   return (
     <>

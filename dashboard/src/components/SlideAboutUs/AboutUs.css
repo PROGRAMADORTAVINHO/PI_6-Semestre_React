@@ -33,10 +33,12 @@
 }
 
 .ul_slide {
-  position: relative;
+  margin-top: auto;
   display: flex;
-  gap: 25px;
-  margin-left: -20%;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
 }
 
 .ul_slide .li_slide {

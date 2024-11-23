@@ -1,23 +1,16 @@
-import { Link } from 'react-router-dom';
-import { 
-  Container,
-  Logo,
-  Navbar,
-  NavItem,
-  NavLink,
-  NavList
-} from './style';
-import NotificationMenu from '../BtnNotificacao';
-import { z } from 'zod';
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { z } from 'zod';
+import NotificationMenu from '../BtnNotificacao';
+import { Container, Logo, Navbar, NavItem, NavLink, NavList } from './style';
 
 const notificationSchema = z.object({
   id: z.number(),
   data_id: z.number(),
   title: z.string(),
   body: z.string(),
-  created_at: z.string()
+  created_at: z.string(),
 });
 
 type Notification = z.infer<typeof notificationSchema>;
@@ -27,7 +20,9 @@ const Header = () => {
 
   const fetchNotifications = async () => {
     try {
-      const response = await axios.get<Notification[]>('https://api-fkun.onrender.com/notifications');
+      const response = await axios.get<Notification[]>(
+        `${process.env.REACT_APP_API_URL}/notifications`
+      );
       setNotifications(response.data);
     } catch (error) {
       console.error('Erro ao buscar notificações:', error);
@@ -36,7 +31,11 @@ const Header = () => {
 
   useEffect(() => {
     fetchNotifications();
-  }, []); 
+
+    const interval = setInterval(() => {
+      fetchNotifications();
+    }, 5000);
+  }, []);
 
   return (
     <Container>
@@ -68,8 +67,11 @@ const Header = () => {
             </Link>
           </NavItem>
 
-          <NotificationMenu notifications={notifications.map(notification => notification.title)} />
-
+          <NotificationMenu
+            notifications={notifications.map(
+              (notification) => notification.title
+            )}
+          />
         </NavList>
       </Navbar>
     </Container>

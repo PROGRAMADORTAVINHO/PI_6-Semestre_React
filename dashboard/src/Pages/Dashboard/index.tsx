@@ -1,17 +1,20 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { z } from 'zod';
+import BarChart from '../../components/BarChart';
 import Header from '../../components/Header';
 import LineChart from '../../components/LineChart';
 import LineChartMultiple from '../../components/LineChartMultiple';
-import BarChart from '../../components/BarChart';
 import {
   AccelerationXYZ,
   ChartsContainer,
-  MainContainer,
-  Temperatura,
-  Media,
   Espaco,
+  MainContainer,
+  Media,
+  Temperatura,
+  AccelerationX,
+  AccelerationY,
+  AccelerationZ
 } from './style';
 
 const dataSchema = z.object({
@@ -61,7 +64,6 @@ const generateChartData = (
   ],
 });
 
-
 const generateChartDataMultiple = (
   data: Data[],
   label: string | string[],
@@ -91,21 +93,43 @@ const generateBarChartData = (
 
   const averages = keys.map((key) => calculateAverage(key));
 
-  const xValues = ['Aceleração no eixo X', 'Aceleração no eixo Y', 'Aceleração no eixo Z', 'Temperatura'];
+  const xValues = [
+    'Aceleração no eixo X',
+    'Aceleração no eixo Y',
+    'Aceleração no eixo Z',
+    'Temperatura',
+  ];
 
   return {
     labels: xValues, // Numérico para atender ao tipo do estado
-    datasets: [{
-      label: 'Média',
-      data: averages,
-      backgroundColor: backgroundColors,
-      borderColor: backgroundColors,
-    }],
+    datasets: [
+      {
+        label: 'Média',
+        data: averages,
+        backgroundColor: backgroundColors,
+        borderColor: backgroundColors,
+      },
+    ],
   };
 };
 
 const Dashboard = () => {
   const [temperatureData, setTemperatureData] = useState<ChartData>({
+    labels: [],
+    datasets: [],
+  });
+  
+  const [accelerationXData, setAccelerationXData] = useState<ChartData>({
+    labels: [],
+    datasets: [],
+  });
+  
+  const [accelerationYData, setAccelerationYData] = useState<ChartData>({
+    labels: [],
+    datasets: [],
+  });
+
+  const [accelerationZData, setAccelerationZData] = useState<ChartData>({
     labels: [],
     datasets: [],
   });
@@ -122,7 +146,7 @@ const Dashboard = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://api-fkun.onrender.com/data');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/data`);
 
       setTemperatureData(
         generateChartData(
@@ -133,26 +157,60 @@ const Dashboard = () => {
         )
       );
 
+      setAccelerationXData(
+        generateChartData(
+          response.data as Data[],
+          'Aceleração no eixo X',
+          'acceleration_x',
+          'blue'
+        )
+      );
+
+      setAccelerationYData(
+        generateChartData(
+          response.data as Data[],
+          'Aceleração no eixo Y',
+          'acceleration_y',
+          'green'
+        )
+      );
+
+      setAccelerationZData(
+        generateChartData(
+          response.data as Data[],
+          'Aceleração no eixo Z',
+          'acceleration_z',
+          'purple'
+        )
+      );
+
+
       setAccelerationXYZData(
         generateChartDataMultiple(
           response.data as Data[],
-          ['Aceleração no eixo X','Aceleração no eixo Y','Aceleração no eixo Z'],
-          ['acceleration_x','acceleration_y','acceleration_z'],
-          ['blue', 'green', 'red'],
+          [
+            'Aceleração no eixo X',
+            'Aceleração no eixo Y',
+            'Aceleração no eixo Z',
+          ],
+          ['acceleration_x', 'acceleration_y', 'acceleration_z'],
+          ['blue', 'green', 'red']
         )
       );
 
       setAverageData(
         generateBarChartData(
           response.data as Data[],
-          ['Aceleração no eixo X', 'Aceleração no eixo Y', 'Aceleração no eixo Z', 'Temperatura'],
+          [
+            'Aceleração no eixo X',
+            'Aceleração no eixo Y',
+            'Aceleração no eixo Z',
+            'Temperatura',
+          ],
           ['acceleration_x', 'acceleration_y', 'acceleration_z', 'temperature'],
           ['blue', 'green', 'purple', 'red']
         )
       );
-      
-      
-
     } catch (error) {
       console.log(error);
     }
@@ -180,22 +238,30 @@ const Dashboard = () => {
             />
           </Temperatura>
 
-          <Media>
-            <BarChart
-              chartData={averageData}
-              yLabel={'Média'}
+          <AccelerationX>
+            <LineChart
+              chartData={accelerationXData}
+              yLabel={'Aceleração no eixo X'}
             />
-          </Media>
+          </AccelerationX>
 
+          <AccelerationY>
+            <LineChart
+              chartData={accelerationYData}
+              yLabel={'Aceleração no eixo Y'}
+            />
+          </AccelerationY>
+
+          <AccelerationZ>
+            <LineChart
+              chartData={accelerationZData}
+              yLabel={'Aceleração no eixo Z'}
+            />
+          </AccelerationZ>
         </ChartsContainer>
-
-        <AccelerationXYZ>
-            <LineChartMultiple
-              chartData={accelerationXYZData}
-              yLabel={'Aceleração (m/s²)'}
-            />
-        </AccelerationXYZ>
-
+        <Media>
+            <BarChart chartData={averageData} yLabel={'Média'} />
+          </Media>
       </MainContainer>
       <Espaco></Espaco>
     </>

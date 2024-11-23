@@ -6,6 +6,11 @@ export const Container = styled.header`
   background-color: ${GlobalStyle.bg_color};
   font-family: ${GlobalStyle.font};
   padding: 10px 0;
+
+  @media (max-width: 768px) {
+    height: auto;
+    flex-direction: column;
+  }
 `;
 
 export const Logo = styled.img`
@@ -18,6 +23,11 @@ export const Navbar = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const NavList = styled.ul`
@@ -25,6 +35,10 @@ export const NavList = styled.ul`
   align-items: center;
   list-style: none;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const NavItem = styled.li`
@@ -41,4 +55,3 @@ export const NavLink = styled.a`
     color: ${GlobalStyle.color};
   }
 `;
-

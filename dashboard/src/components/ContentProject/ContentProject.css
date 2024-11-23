@@ -37,6 +37,14 @@
 
 /* Responsividade */
 @media (max-width: 1024px) {
+  .container_project {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    padding: 2%;
+    margin-top: 10%;
+  }
   .card_description_about_project {
     margin: 0 50px 0 50px; /* Reduz as margens laterais */
     height: auto; /* Permite que o conteúdo ajuste a altura dinamicamente */
