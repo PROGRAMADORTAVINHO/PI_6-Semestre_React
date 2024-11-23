@@ -46,11 +46,10 @@ const SlideAboutUs = () => {
       },
     ],
   };
-  
 
   return (
     <>
-      <div className='title_teams'>
+      <div className='title_teams' style={{ marginBottom: '15px' }}>
         {' '}
         <h3> Equipe Scrum </h3>{' '}
       </div>
@@ -89,38 +88,38 @@ const data = [
   {
     name: 'Anderson Akira Mekaru',
     img: 'students/anderson.jpg',
-    profession: 'Web Design',
+    profession: 'Hardware developer',
     LinkedIn: 'https://www.linkedin.com/in/akira-mekaru/',
   },
   {
     name: 'Daniel Tsuyoshi Izumi',
     img: 'students/daniel.jpg',
-    profession: 'Technical Writer',
+    profession: 'Technical writer',
     LinkedIn: 'https://www.linkedin.com/in/daniel-tsuyoshi-izumi-5ab817311/',
   },
   {
     name: 'Felipe Gouvea da Silva',
     img: 'students/felipe.jpg',
-    profession: 'Mobile Developer',
+    profession: 'Mobile developer',
     LinkedIn:
       'https://www.linkedin.com/in/felipe-gouvea-da-silva-712385309/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
     name: 'João Otavio Duarte de Souza',
     img: 'students/joao.jpg',
-    profession: 'Web Developer',
+    profession: 'Web developer',
     LinkedIn: 'https://www.linkedin.com/in/joaootavioduartedesouza/',
   },
   {
     name: 'Marcelo Alfonso de Souza',
     img: 'students/marcelo.jpg',
-    profession: 'Back-end Developer',
+    profession: 'Back-end developer',
     LinkedIn: 'https://www.linkedin.com/in/marcelo-alfonso/',
   },
   {
     name: 'Rafael Eduardo Rodrigues Navarro',
     img: 'students/rafael.jpg',
-    profession: 'SolidWorks',
+    profession: 'Back-end developer',
     LinkedIn: 'https://www.linkedin.com/in/rafael-navarro-041b111b4/',
   },
   {
